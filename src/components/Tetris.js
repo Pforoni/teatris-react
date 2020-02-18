@@ -15,11 +15,11 @@ import Display from './Display';
 import StartButton from './StartButton';
 
 const Tetris = () => {
-    const [dropTime, setDropTime] = useStage(null);
-    const [gameOver, setGameOver] = useStage(false);
+    const [dropTime, setDropTime] = useState(null);
+    const [gameOver, setGameOver] = useState(false);
 
     const [player, updatePlayerPos, resetPlayer] = usePlayer();
-    const [stage, setStage] = useStage(player);
+    const [stage, setStage] = useStage(player, resetPlayer);
 
     console.log('re-render');
     console.log('Over', gameOver);
@@ -67,7 +67,7 @@ const Tetris = () => {
                                 <Display text="Levels" />
                             </div>
                         )}
-                    <StartButton onclick={startGame}/>
+                    <StartButton callback={startGame}/>
                 </aside>
             </StyledTetris>
         </StyledTetrisWrapper>
